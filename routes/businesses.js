@@ -4,7 +4,7 @@ var db = require('../db/api')
 
 
 router.get('/', function(req, res, next) {
-  db.findAllBusinesses().then(function(data) {
+  db.findAllBusinessesAndIndustry().then(function(data) {
   console.log(data);
   res.json(data)
 });

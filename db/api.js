@@ -1,8 +1,11 @@
 var knex = require('./knex');
 
 module.exports = {
-  findAllBusinesses: function (type) {
-    return knex('business').select();
+  findAllBusinessesAndIndustry: function (type) {
+    return knex('business').select()
+    .join('industry', function() {
+      this.on('business.industry_id', '=', 'industry.id')
+    });
   },
   findAllOwners: function () {
     return knex('owner').select();
