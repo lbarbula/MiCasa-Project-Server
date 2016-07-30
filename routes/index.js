@@ -11,12 +11,19 @@ var path = require('path');
 //   })
 // });
 
-router.get('/', function(req, res, next) {
-  db.findAllBusinesses().then(function(data) {
-  console.log(data);
-  res.json(data)
-});
-});
+// router.get('/', function(req, res, next) {
+//   db.findAllBusinesses().then(function(data) {
+//   console.log(data);
+//   res.json(data)
+// });
+// });
+
+
+var businesses = require('./businesses');
+router.use('/businesses', businesses);
+
+var entrepreneurs = require('./entrepreneurs');
+router.use('/entrepreneurs', entrepreneurs);
 
 
 module.exports = router;
