@@ -20,4 +20,10 @@ router.get('/:id', function(req, res, next) {
   })
 })
 
+/*
+
+There is something going wrong with the business & owner lookup when the seeds are rerun, when clicking on Bonkers it was bringing up the General Duffy's Hot Sauce Emporium detail and visa versa. 
+
+*/
+
 module.exports = router;
