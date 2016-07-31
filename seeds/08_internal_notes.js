@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
 				notes: 'They\'re ok!'
 			}),
 			knex('internal_notes').insert({
-				business_id: find.findFromList('General Duffy\'s Hot Sauce Emporium', business, 'first_name'),
+				business_id: find.findFromList('General Duffy\'s Hot Sauce Emporium', business, 'name'),
 				account_id: find.findFromList('Laney', account, 'username'),
 				notes: 'whateerreererererrer!'
 			})
