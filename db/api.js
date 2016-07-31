@@ -37,5 +37,17 @@ module.exports = {
     })
     .where('business.id', '=', id);
 
+  },
+  getCommentsById: function (id) {
+    // console.log("hitting function");
+    return knex('business')
+    .select('business.id', 'internal_notes.business_id', 'internal_notes.account_id', 'account.username', 'internal_notes.notes')
+    .join('internal_notes', function() {
+      this.on('business.id', '=', 'internal_notes.business_id')
+    })
+    .join('account', function () {
+      this.on('internal_notes.account_id', '=', 'account.id')
+    })
+    .where('business.id', '=', id)
   }
 };

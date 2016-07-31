@@ -11,8 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  db.findBusinessesAndOwnersById(req.params.id).then(function(data) {
-    console.log(data);
+  return Promise.all([
+      db.getCommentsById(req.params.id),
+      db.findBusinessesAndOwnersById(req.params.id)
+  ])
+  .then(function(data) {
     res.json(data);
   })
 })
