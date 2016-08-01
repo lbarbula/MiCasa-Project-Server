@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors')
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var methodOverride = require('method-override');
 
 var app = express();
 
@@ -15,6 +16,7 @@ var app = express();
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors())
 app.use(logger('dev'));
+app.use(methodOverride('_method'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
