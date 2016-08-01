@@ -20,9 +20,15 @@ router.get('/:id', function(req, res, next) {
   })
 })
 
+// router.put('/:id/edit', function(req, res, next) {
+//   db.editBusiness(req.body).then(function() {
+//     res.json({message: "Business Updated"})
+//   })
+//
+// });
 /*
 
-There is something going wrong with the business & owner lookup when the seeds are rerun, when clicking on Bonkers it was bringing up the General Duffy's Hot Sauce Emporium detail and visa versa. 
+There is something going wrong with the business & owner lookup when the seeds are rerun, when clicking on Bonkers it was bringing up the General Duffy's Hot Sauce Emporium detail and visa versa.
 
 */
 
