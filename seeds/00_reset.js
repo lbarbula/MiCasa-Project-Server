@@ -7,6 +7,8 @@ exports.seed = function(knex, Promise) {
 		}).then(function() {
 			return knex('business').del()
 		}).then(function() {
+			return knex('industry').del()
+		}).then(function() {
 			return knex('owner').del()
 		}).then(function() {
 			return knex('class').del()
