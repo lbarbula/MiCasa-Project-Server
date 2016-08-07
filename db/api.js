@@ -1,10 +1,14 @@
 var knex = require('./knex');
 
 module.exports = {
+  getAllIndustries: function () {
+    console.log('yo');
+    return knex('industry').select();
+  },
   findAllBusinessesAndIndustry: function (type) {
     return knex('business').select()
     .join('industry', function() {
-      this.on('business.industry_id', '=', 'industry.id')
+      this.on('business.industry_id', '=', 'industry.id');
     });
   },
   findAllOwners: function () {
@@ -14,26 +18,26 @@ module.exports = {
     return knex('business')
     .select()
     .join('industry', function() {
-      this.on('business.industry_id', '=', 'industry.id')
+      this.on('business.industry_id', '=', 'industry.id');
     })
     .join('business_owner', function() {
-      this.on('business.id', '=', 'business_owner.business_id')
+      this.on('business.id', '=', 'business_owner.business_id');
     })
     .join('owner', function() {
-      this.on('business_owner.owner_id', '=', 'owner.id')
-    })
+      this.on('business_owner.owner_id', '=', 'owner.id');
+    });
   },
   findBusinessesAndOwnersById: function (id) {
     return knex('business')
     .select()
     .join('industry', function() {
-      this.on('business.industry_id', '=', 'industry.id')
+      this.on('business.industry_id', '=', 'industry.id');
     })
     .join('business_owner', function() {
-      this.on('business.id', '=', 'business_owner.business_id')
+      this.on('business.id', '=', 'business_owner.business_id');
     })
     .join('owner', function() {
-      this.on('business_owner.owner_id', '=', 'owner.id')
+      this.on('business_owner.owner_id', '=', 'owner.id');
     })
     .where('business.id', '=', id);
 
@@ -43,11 +47,11 @@ module.exports = {
     return knex('business')
     .select('business.id', 'internal_notes.business_id', 'internal_notes.account_id', 'account.username', 'internal_notes.notes')
     .join('internal_notes', function() {
-      this.on('business.id', '=', 'internal_notes.business_id')
+      this.on('business.id', '=', 'internal_notes.business_id');
     })
     .join('account', function () {
-      this.on('internal_notes.account_id', '=', 'account.id')
+      this.on('internal_notes.account_id', '=', 'account.id');
     })
-    .where('business.id', '=', id)
+    .where('business.id', '=', id);
   }
 };

@@ -4,20 +4,27 @@ var db = require('../db/api')
 
 
 router.get('/', function(req, res, next) {
-  db.findBusinessesAndOwners().then(function(data) {
-  console.log(data);
-  res.json(data)
-});
+	db.findBusinessesAndOwners().then(function(data) {
+		console.log(data);
+		res.json(data)
+	});
 });
 
+router.get('/industries', function(req, res, next) {
+	db.getAllIndustries().then(function(data) {
+		res.json(data)
+	});
+});
+
+
 router.get('/:id', function(req, res, next) {
-  return Promise.all([
-      db.getCommentsById(req.params.id),
-      db.findBusinessesAndOwnersById(req.params.id)
-  ])
-  .then(function(data) {
-    res.json(data);
-  })
+	return Promise.all([
+			db.getCommentsById(req.params.id),
+			db.findBusinessesAndOwnersById(req.params.id)
+		])
+		.then(function(data) {
+			res.json(data);
+		})
 })
 
 // router.put('/:id/edit', function(req, res, next) {
