@@ -2,8 +2,10 @@ var knex = require('./knex');
 
 module.exports = {
   getAllIndustries: function () {
-    console.log('yo');
     return knex('industry').select();
+  },
+  getAllCities: function () {
+    return knex('business').select('city').distinct('city');
   },
   findAllBusinessesAndIndustry: function (type) {
     return knex('business').select()

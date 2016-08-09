@@ -5,7 +5,12 @@ var db = require('../db/api')
 
 router.get('/', function(req, res, next) {
 	db.findBusinessesAndOwners().then(function(data) {
-		console.log(data);
+		res.json(data)
+	});
+});
+
+router.get('/cities', function(req, res, next) {
+	db.getAllCities().then(function(data) {
 		res.json(data)
 	});
 });
