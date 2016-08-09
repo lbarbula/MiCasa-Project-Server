@@ -14,7 +14,7 @@ exports.up = function(knex, Promise) {
   }).then(function() {
     return knex.schema.createTable('industry', function(table) {
       table.increments();
-      table.string('name');
+      table.string('type');
     });
   }).then(function() {
     return knex.schema.createTable('owner', function(table) {
