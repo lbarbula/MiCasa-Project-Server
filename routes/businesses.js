@@ -5,7 +5,12 @@ var db = require('../db/api')
 
 router.get('/', function(req, res, next) {
 	db.findBusinessesAndOwners().then(function(data) {
-		console.log(data);
+		res.json(data)
+	});
+});
+
+router.get('/cities', function(req, res, next) {
+	db.getAllCities().then(function(data) {
 		res.json(data)
 	});
 });
@@ -18,6 +23,7 @@ router.get('/industries', function(req, res, next) {
 
 
 router.get('/:id', function(req, res, next) {
+	console.log('hi');
 	return Promise.all([
 			db.getCommentsById(req.params.id),
 			db.findBusinessesAndOwnersById(req.params.id)
