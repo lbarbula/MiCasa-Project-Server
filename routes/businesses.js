@@ -23,6 +23,7 @@ router.get('/industries', function(req, res, next) {
 
 
 router.get('/:id', function(req, res, next) {
+	console.log('hi');
 	return Promise.all([
 			db.getCommentsById(req.params.id),
 			db.findBusinessesAndOwnersById(req.params.id)
