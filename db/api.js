@@ -55,5 +55,10 @@ module.exports = {
       this.on('internal_notes.account_id', '=', 'account.id');
     })
     .where('business.id', '=', id);
+  },
+  updateBusiness: function (body) {
+    return knex('business')
+    .update(body)
+    .where('business.id', '=', body.id);
   }
 };
