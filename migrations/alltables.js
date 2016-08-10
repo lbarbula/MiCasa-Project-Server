@@ -23,6 +23,7 @@ exports.up = function(knex, Promise) {
       table.string('last_name');
       table.string('email');
       table.string('phone');
+      table.string('gender');
     });
   }).then(function(){
     return knex.schema.createTable('business', function(table) {
