@@ -38,4 +38,13 @@ router.put('/:id', function(req, res, next) {
 	})
 })
 
+router.post('/:id/addNote', function(req, res, next) {
+	db.addNote(req.body).then(function(){
+		console.log('body', req.body)
+		res.json({
+			message: "Note Added"
+		})
+	})
+})
+
 module.exports = router;
