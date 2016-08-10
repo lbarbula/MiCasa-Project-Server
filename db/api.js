@@ -60,5 +60,10 @@ module.exports = {
     return knex('business')
     .update(body)
     .where('business.id', '=', body.id);
+  },
+  addNote: function (note) {
+    return knex('internal_notes')
+    .insert(note)
+    .where('business_id', '=', note.business_id)
   }
 };
