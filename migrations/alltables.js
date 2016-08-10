@@ -54,8 +54,10 @@ exports.up = function(knex, Promise) {
     });
   }).then(function(){
     return knex.schema.createTable('internal_notes', function(table) {
+      table.increments();
       table.integer('business_id').references('id').inTable('business').onDelete('cascade');
       table.integer('account_id').references('id').inTable('account').onDelete('cascade');
+      table.date('date');
       table.text('notes');
     });
   });
