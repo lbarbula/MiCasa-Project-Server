@@ -57,21 +57,18 @@ router.post('/add', function(req, res, next) {
 	var businessData = req.body[0];
 	var ownerData = req.body[1];
 	var classData = req.body[2];
-	console.log(req.body);
 	return Promise.all([
 			db.addBusiness(businessData),
 			db.addOwner(ownerData)
 		])
 		.then(function(data) {
 			var ownerId = data[1][0]
-			db.addBusinessOwner(data[0][0], data[1][0])
+			var businessId = data[0][0]
+			db.addBusinessOwner(businessId, ownerId)
 				.then(function() {
-					console.log("classData:", classData);
-					console.log("OwnerId:", ownerId);
 					db.addClassOwner(ownerId, classData).then(function() {
-						console.log("Added data");
 						res.json({
-							message: "You did it"
+							business_id: businessId
 						})
 					})
 				})
