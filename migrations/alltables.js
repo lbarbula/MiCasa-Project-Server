@@ -22,6 +22,8 @@ exports.up = function(knex, Promise) {
       table.string('email');
       table.string('phone');
       table.string('gender');
+      table.string('languageSpoken');
+      table.boolean('isMinority'); //Display whether business is minority owned on page
     });
   }).then(function(){
     return knex.schema.createTable('business', function(table) {
