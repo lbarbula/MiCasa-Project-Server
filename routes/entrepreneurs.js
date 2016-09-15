@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
   });
 });
 router.post('/add', function(req, res, next){
+  console.log("req.body", req.body);
   db.addOwner(req.body)
   .then(function(data){
     console.log(data)
