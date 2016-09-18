@@ -19,6 +19,9 @@ exports.seed = function(knex, Promise) {
 			name: 'Listening to your Business'
 		}),
 		knex('class').insert({
+			name: 'Power Connect'
+		}),
+		knex('class').insert({
 			name: 'Considering a Business?'
 		})
 	]);

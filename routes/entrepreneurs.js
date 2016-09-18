@@ -11,10 +11,12 @@ router.get('/', function(req, res, next) {
 });
 router.post('/add', function(req, res, next){
   console.log("req.body", req.body);
-  db.addOwner(req.body)
+  db.addOwner(req.body[0])
   .then(function(data){
-    console.log(data)
+    console.log("data", data)
+    db.addClassOwner(data[0], req.body[1]).then(function() {
     res.json(data)
+    })
   })
 })
 
