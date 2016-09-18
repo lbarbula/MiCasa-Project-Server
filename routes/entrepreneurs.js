@@ -21,9 +21,12 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next){
-  db.addOwner(req.body)
+  db.addOwner(req.body[0])
   .then(function(data){
+    console.log("data", data)
+    db.addClassOwner(data[0], req.body[1]).then(function() {
     res.json(data)
+    })
   })
 })
 

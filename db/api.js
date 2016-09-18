@@ -89,7 +89,6 @@ module.exports = {
     return knex('business').insert(body).returning('id')
   },
   addOwner: function (body) {
-    console.log('addOwner firing, body=', body);
     return knex('owner').insert(body).returning('id')
   },
   addBusinessOwner: function (businessId, ownerId) {
