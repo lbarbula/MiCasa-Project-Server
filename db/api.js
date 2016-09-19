@@ -19,6 +19,22 @@ module.exports = {
   findAllOwners: function () {
     return knex('owner').select();
   },
+
+  findEntrepreneurById: function(id) {
+    return knex('owner').select().where('owner.id', '=', id);
+  },
+
+  findClassesById: function(id) {
+    return knex('owner').select()
+    .join('class_owner', function() {
+      this.on('owner.id', '=','class_owner.owner_id');
+    })
+    .join('class', function() {
+      this.on('class.id', '=', 'class_owner.class_id')
+    })
+    .where('owner.id', '=', id);
+  },
+
   findBusinessesAndOwners: function () {
     return knex('business')
     .select()
