@@ -60,7 +60,7 @@ module.exports = {
     .join('owner', function() {
       this.on('business_owner.owner_id', '=', 'owner.id');
     })
-    .where('business.id', '=', id);
+    .where('owner.id', '=', id);
 
   },
   getCommentsById: function (id) {
