@@ -53,6 +53,15 @@ router.post('/:id/addNote', function(req, res, next) {
 	})
 })
 
+router.post('/:id/addById', function(req, res, next) {
+	console.log(req.body);
+	db.addBusinessById(req.params.id, req.body).then(function() {
+		res.json({
+			message:"Business added to entrepreneur"
+		})
+	})
+})
+
 router.post('/add', function(req, res, next) {
 	var businessData = req.body[0];
 	var ownerData = req.body[1];

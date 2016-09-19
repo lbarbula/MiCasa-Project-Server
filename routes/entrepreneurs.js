@@ -13,7 +13,7 @@ router.get('/:id', function(req, res, next) {
   return Promise.all([
     db.findEntrepreneurById(req.params.id),
     db.findClassesById(req.params.id),
-    db.findBusinessesAndOwnersById(req.params.id)
+    db.findBusinessByEntrepreneurId(req.params.id)
   ])
   .then(function(data) {
     res.json(data);

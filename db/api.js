@@ -60,9 +60,18 @@ module.exports = {
     .join('owner', function() {
       this.on('business_owner.owner_id', '=', 'owner.id');
     })
-    .where('owner.id', '=', id);
+    .where('business.id', '=', id);
 
   },
+
+  findBusinessByEntrepreneurId: function (id) {
+    return knex('business').select()
+    .join('business_owner' , function() {
+      this.on('business.id', '=', 'business_owner.business_id');
+    })
+    .where('business_owner.owner_id', '=', id)
+  },
+  
   getCommentsById: function (id) {
     // console.log("hitting function");
     return knex('business')
@@ -85,6 +94,18 @@ module.exports = {
     .insert(note)
     .where('business_id', '=', note.business_id)
   },
+
+  addBusinessById: function (entrepreneurId, body) {
+    console.log("This is in the function", entrepreneurId);
+    return knex('business').insert(body).returning('id').then(function(id) {
+      console.log(id);
+      return knex('business_owner').insert({
+        'owner_id': entrepreneurId,
+        'business_id': id[0]
+      })
+    })
+  },
+
   addBusiness: function (body) {
     return knex('business').insert(body).returning('id')
   },
