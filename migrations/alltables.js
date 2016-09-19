@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
       table.string('first_name');
       table.string('last_name');
       table.string('email');
-      table.string('phone');
+      table.string('ownerPhone');
       table.string('gender');
       table.string('languageSpoken');
       table.boolean('isMinority'); //Display whether business is minority owned on page
@@ -34,7 +34,7 @@ exports.up = function(knex, Promise) {
       table.string('state');
       table.integer('zip');
       table.string('email');
-      table.string('phone');
+      table.string('businessPhone');
       table.integer('industry_id').references('id').inTable('industry').onDelete('cascade');
       table.date('date_opened');
       table.date('date_closed');
