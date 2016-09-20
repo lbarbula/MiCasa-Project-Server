@@ -27,6 +27,7 @@ router.post('/:id/addClassToOwner', function(req, res, next) {
 			message: "Class Added"
 		})
   })
+})
 
 router.put('/:id', function(req, res, next) {
 	db.updateEntrepreneur(req.body)
