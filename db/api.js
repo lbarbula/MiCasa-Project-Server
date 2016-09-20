@@ -80,6 +80,12 @@ module.exports = {
     .update(body)
     .where('business.id', '=', body.id);
   },
+  updateEntrepreneur: function (body) {
+    console.log('updating owner');
+    return knex('owner')
+    .update(body)
+    .where('owner.id', '=', body.id);
+  },
   addNote: function (note) {
     return knex('internal_notes')
     .insert(note)
