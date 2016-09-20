@@ -20,6 +20,15 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+router.put('/:id', function(req, res, next) {
+	db.updateEntrepreneur(req.body)
+  .then(function() {
+		res.json({
+			message: "Business Updated"
+		})
+	})
+})
+
 router.post('/add', function(req, res, next){
   db.addOwner(req.body[0])
   .then(function(data){
