@@ -20,6 +20,14 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+router.post('/:id/addClassToOwner', function(req, res, next) {
+  db.addClassOwner(req.params.id, req.body).then(function() {
+    res.json({
+			message: "Class Added"
+		})
+  })
+})
+
 router.post('/add', function(req, res, next){
   db.addOwner(req.body[0])
   .then(function(data){
