@@ -20,6 +20,14 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+router.get('/:id/delete', function(req, res, next) {
+	db.deleteEntrepreneurById(req.params.id)
+	.then(function() {
+		res.json({
+			message: "Entrepreneur Deleted"
+		});
+	})
+})
 
 router.post('/:id/addClassToOwner', function(req, res, next) {
   db.addClassOwner(req.params.id, req.body).then(function() {

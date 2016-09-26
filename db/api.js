@@ -23,6 +23,21 @@ module.exports = {
   findEntrepreneurById: function(id) {
     return knex('owner').select().where('owner.id', '=', id);
   },
+  deleteEntrepreneurById: function (entrepreneurId) {
+    return knex('class_owner')
+    .del()
+    .where('class_owner.owner_id', '=', entrepreneurId)
+    .then(function() {
+      return knex('business_owner')
+      .del()
+      .where('business_owner.owner_id', '=', entrepreneurId)
+      .then(function() {
+        return knex('owner')
+        .del()
+        .where('owner.id', '=', entrepreneurId);
+      })
+    })
+  },
 
   findClassesById: function(id) {
     return knex('owner').select()
