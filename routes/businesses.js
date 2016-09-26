@@ -36,6 +36,15 @@ router.get('/:id', function(req, res, next) {
 		})
 })
 
+router.get('/:id/delete', function(req, res, next) {
+	db.deleteBusinessById(req.params.id)
+	.then(function() {
+		res.json({
+			message: "Business Deleted"
+		});
+	})
+})
+
 router.put('/:id', function(req, res, next) {
 	db.updateBusiness(req.body).then(function() {
 		res.json({

@@ -71,7 +71,7 @@ module.exports = {
     })
     .where('business_owner.owner_id', '=', id)
   },
-  
+
   getCommentsById: function (id) {
     // console.log("hitting function");
     return knex('business')
@@ -111,9 +111,23 @@ module.exports = {
       })
     })
   },
-
   addBusiness: function (body) {
     return knex('business').insert(body).returning('id')
+  },
+  deleteBusinessById: function (businessId) {
+    return knex('internal_notes')
+    .del()
+    .where('internal_notes.business_id', '=', businessId)
+    .then(function() {
+      return knex('business_owner')
+      .del()
+      .where('business_owner.business_id', '=', businessId)
+      .then(function() {
+        return knex('business')
+        .del()
+        .where('business.id', '=', businessId);
+      })
+    })
   },
   addOwner: function (body) {
     return knex('owner').insert(body).returning('id')
