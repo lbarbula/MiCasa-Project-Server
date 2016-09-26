@@ -5,9 +5,9 @@ exports.seed = function(knex, Promise) {
 			last_name: 'Smith',
 			email: 'ksmith@whatevx.com',
 			ownerPhone: '4567890123',
-			gender: 'Male',
+			gender: 'Female',
 			languageSpoken: 'English',
-			isMinority: false
+			isMinority: true
 		}),
 		knex('owner').insert({
 			first_name: 'Alex',
@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
 			email: 'lsmith@gmail.com',
 			ownerPhone: '7890123412',
 			gender: 'Male',
-			languageSpoken: 'English',
+			languageSpoken: 'Spanish',
 			isMinority: false
 		}),
 		knex('owner').insert({
@@ -32,7 +32,7 @@ exports.seed = function(knex, Promise) {
 			last_name: 'McHill',
 			email: 'pighill@yahoo.com',
 			ownerPhone: '7890413456',
-			gender: 'Male',
+			gender: 'Female',
 			languageSpoken: 'English',
 			isMinority: false
 		}),
@@ -42,8 +42,8 @@ exports.seed = function(knex, Promise) {
 			email: 'Jazza@hotmail.com',
 			ownerPhone: '3320123456',
 			gender: 'Male',
-			languageSpoken: 'English',
-			isMinority: false
+			languageSpoken: 'Spanish',
+			isMinority: true
 		}),
 		knex('owner').insert({
 			first_name: 'Ron',
@@ -59,9 +59,9 @@ exports.seed = function(knex, Promise) {
 			last_name: 'Umbur',
 			email: 'SamUmbz@whatevs.com',
 			ownerPhone: '1234568811',
-			gender: 'Male',
-			languageSpoken: 'English',
-			isMinority: false
+			gender: 'Female',
+			languageSpoken: 'Bilingual',
+			isMinority: true
 		}),
 		knex('owner').insert({
 			first_name: 'Sizzle',

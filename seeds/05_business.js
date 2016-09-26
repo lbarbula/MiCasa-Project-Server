@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
 				zip: '80211',
 				email: 'mybusiness@generalduffys.com',
 				businessPhone: '1234567890',
-				industry_id: find.findFromList('Beauty', industry, 'type'),
+				industry_id: find.findFromList('Food Service', industry, 'type'),
 				date_opened: new Date(),
 				date_closed: new Date(),
 				good_standing: true,
